@@ -1,0 +1,47 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /opt/logs/qa.log
+  fields:
+    type: qfchat
+    environment: QA
+    layer: App
+  multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /opt/logs/uat.log
+  fields:
+    type: qfchat
+    environment: UAT
+    layer: App
+  multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /opt/logs/dev.log
+  fields:
+    type: qfchat
+    environment: DEV
+    layer: App
+  multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /opt/logs/prod.log
+  fields:
+    type: qfchat
+    environment: PROD
+    layer: App
+  multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after
+output.logstash:
+  hosts: ["172.1.7.3:5044"]

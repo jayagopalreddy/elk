@@ -1,0 +1,132 @@
+actions:
+  1:
+    action: delete_indices
+    description: >-
+      Delete indices older than 5 days (based on index name), for logstash-
+      prefixed indices. Ignore the error if the filter does not result in an
+      actionable list of indices (ignore_empty_list) and exit cleanly.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+      disable_action: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: prod-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 5
+      exclude:
+  2:
+    action: delete_indices
+    description: >-
+      Delete indices older than 5 days (based on index name), for logstash-
+      prefixed indices. Ignore the error if the filter does not result in an
+      actionable list of indices (ignore_empty_list) and exit cleanly.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+      disable_action: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: uat-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 5
+      exclude:
+  2:
+    action: delete_indices
+    description: >-
+      Delete indices older than 10 days (based on index name), for logstash-
+      prefixed indices. Ignore the error if the filter does not result in an
+      actionable list of indices (ignore_empty_list) and exit cleanly.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+      disable_action: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: qa-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 10
+      exclude:
+  4:
+    action: delete_indices
+    description: >-
+      Delete indices older than 10 days (based on index name), for logstash-
+      prefixed indices. Ignore the error if the filter does not result in an
+      actionable list of indices (ignore_empty_list) and exit cleanly.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+      disable_action: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: dev-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 10
+      exclude:
+  5:
+    action: delete_indices
+    description: >-
+      Delete indices older than 3 days (based on index name), for logstash-
+      prefixed indices. Ignore the error if the filter does not result in an
+      actionable list of indices (ignore_empty_list) and exit cleanly.
+    options:
+      ignore_empty_list: True
+      timeout_override:
+      continue_if_exception: False
+      disable_action: False
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: alb-
+      exclude:
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 3
+      exclude:
+
+
+#  3:
+#    action: delete_indices
+#    description: >-
+#      Delete indices in excess of 65 gigabytes
+#    options:
+#      ignore_empty_list: true
+#    filters:
+#    - filtertype: pattern
+#      kind: prefix
+#      value: dev-
+#    - filtertype: space
+#      disk-space: 65
+#      use_age: true
+#      source: creation_date
