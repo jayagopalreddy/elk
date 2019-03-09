@@ -24,7 +24,7 @@ filebeat.inputs:
   paths:
     - /opt/logs/prod.log
   fields:
-    type: qfchat
+    type: qf
     environment: PROD
     layer: App
   multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
