@@ -16,6 +16,8 @@ We need to mount our logs here (which we need to shift to logstash) `--volume="/
 ### Configuring Filebeat
 
 Filebeat configuration file `/home/ec2-user/filebeat.yml`
+`sudo vim /home/ec2-user/filebeat.yml`
+
 ```console
 filebeat.inputs:
 - type: log
