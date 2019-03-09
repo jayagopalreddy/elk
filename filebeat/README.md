@@ -12,3 +12,23 @@ $ docker run -d --name=filebeat --user=root --volume="/home/ec2-user/filebeat.ym
 ```
 
 We need to mount our logs here (which we need to shift to logstash) `--volume="/opt/logs/:/opt/logs/:ro"`
+
+### Configuring Filebeat
+
+Filebeat configuration file `/home/ec2-user/filebeat.yml`
+```console
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /opt/logs/prod.log
+  fields:
+    type: qfchat
+    environment: PROD
+    layer: App
+  multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+  multiline.negate: true
+  multiline.match: after  
+output.logstash:
+  hosts: ["172.0.0.07:5044"]
+```
