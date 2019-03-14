@@ -32,6 +32,12 @@ $ which curator
 
 $ /usr/local/bin/curator --version
 ```
+
+Create a folder for Curator logs:
+```console
+$ sudo mkdir /var/log/curator
+```
+
 A good practice is to install on Elasticsearch machine itself.
 
 If your log size is more and you want to keep old data for 5days as per your requirement then you need to delete old Elasticsearch indices where all logs get stored and these results free up some disk space for newly generated logs. And you will be knowing Logstash create new index every day this is default configuration.
