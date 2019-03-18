@@ -4,7 +4,7 @@ filebeat.inputs:
   paths:
     - /opt/logs/qa.log
   fields:
-    type: qfchat
+    type: qf
     environment: QA
     layer: App
   multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
@@ -15,7 +15,7 @@ filebeat.inputs:
   paths:
     - /opt/logs/uat.log
   fields:
-    type: qfchat
+    type: qf
     environment: UAT
     layer: App
   multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
@@ -26,7 +26,7 @@ filebeat.inputs:
   paths:
     - /opt/logs/dev.log
   fields:
-    type: qfchat
+    type: qf
     environment: DEV
     layer: App
   multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
@@ -37,7 +37,7 @@ filebeat.inputs:
   paths:
     - /opt/logs/prod.log
   fields:
-    type: qfchat
+    type: qf
     environment: PROD
     layer: App
   multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
