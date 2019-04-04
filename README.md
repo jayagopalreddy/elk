@@ -266,7 +266,7 @@ Increase open file limits of docker daemon in this path `/etc/docker/daemon.json
 
 Restart the Docker service.
 ```console
-$ service docker restart
+$ sudo service docker restart
 ```
 
 
