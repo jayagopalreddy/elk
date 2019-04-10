@@ -243,10 +243,8 @@ You should then be able to run all of the docker commands without requiring sud
 Create directories to persist Elasticsearch and Logstash data even after removing the containers
 
 ```console
-$ sudo mkdir /data
-$ sudo chown -R ec2-user:ec2-user /data/
-$ mkdir /data/elasticsearch
-$ mkdir /data/logstash
+$ mkdir -p /data/elasticsearch
+$ mkdir -p /data/logstash
 $ sudo chown -R 1000:1000 /data/
 ```
 
