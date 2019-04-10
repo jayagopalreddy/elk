@@ -251,16 +251,21 @@ $ sudo chown -R 1000:1000 /data/
 ```
 
 
-Increase open file limits of docker daemon in this path `/etc/docker/daemon.json`, and paste the below content.
+Increase open file limits of docker daemon in this path `/etc/sysconfig/docker`, and paste the below content.
 ```console
-{
-    "default-ulimit": "nofile=65536:65536",
-    "log-driver": "json-file",
-    "log-opts": {
-    "max-size": "50m",
-    "max-file": "3"
-    }
-}
+# The max number of open files for the daemon itself, and all
+# running containers.  The default value of 1048576 mirrors the value
+# used by the systemd service unit.
+DAEMON_MAXFILES=1048576
+
+# Additional startup options for the Docker daemon, for example:
+# OPTIONS="--ip-forward=true --iptables=true"
+# By default we limit the number of open files per container
+OPTIONS="--default-ulimit nofile=65536:65536"
+
+# How many seconds the sysvinit script waits for the pidfile to appear
+# when starting the daemon.
+DAEMON_PIDFILE_TIMEOUT=10
 ```
 
 
