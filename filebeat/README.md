@@ -8,7 +8,7 @@
 Run filebeat container by using below command:
 
 ```console
-$ docker run -d --name=filebeat --user=root --volume="/home/ec2-user/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro" --volume="/opt/logs/:/opt/logs/:ro" --volume="/opt/logstash/data:/usr/share/filebeat/data:rw" --volume="/opt/logstash/logs:/usr/share/filebeat/logs:rw" --log-driver json-file --log-opt max-size=10m --log-opt max-file=10 --hostname test-node-1 docker.elastic.co/beats/filebeat:6.6.1
+$ docker run --restart=always -d --name=filebeat --user=root --volume="/home/ec2-user/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro" --volume="/opt/logs/:/opt/logs/:ro" --volume="/opt/logstash/data:/usr/share/filebeat/data:rw" --volume="/opt/logstash/logs:/usr/share/filebeat/logs:rw" --log-driver json-file --log-opt max-size=10m --log-opt max-file=10 --hostname test-node-1 docker.elastic.co/beats/filebeat:6.6.1
 ```
 
 We need to mount our logs here (which we need to shift to logstash) `--volume="/opt/logs/:/opt/logs/:ro"`
