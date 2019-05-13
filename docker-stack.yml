@@ -42,6 +42,8 @@ services:
         target: /usr/share/logstash/pipeline/logstash.conf
       - source: logstash_pipeline_alb
         target: /usr/share/logstash/pipeline/alb.conf
+      - source: logstash_pipeline_slack
+        target: /usr/share/logstash/pipeline/slack.conf
     environment:
       LS_JAVA_OPTS: "-Xmx1G -Xms1G"
     networks:
@@ -75,6 +77,8 @@ configs:
     file: ./logstash/pipeline/logstash.conf
   logstash_pipeline_alb:
     file: ./logstash/pipeline/alb.conf
+  logstash_pipeline_slack:
+    file: ./logstash/pipeline/slack.conf
   kibana_config:
     file: ./kibana/config/kibana.yml
 networks:
