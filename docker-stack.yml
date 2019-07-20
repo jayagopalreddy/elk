@@ -3,7 +3,7 @@ services:
   elasticsearch:
     volumes:
       - /data/elasticsearch:/usr/share/elasticsearch/data
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.1
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -25,7 +25,7 @@ services:
   logstash:
     volumes:
       - /data/logstash:/usr/share/logstash/data/
-    image: logstash-custom:6.7.1
+    image: logstash-custom:6.8.1
     ports:
       - "5000:5000"
       - "5044:5044"
@@ -52,7 +52,7 @@ services:
       mode: replicated
       replicas: 1
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.7.1
+    image: docker.elastic.co/kibana/kibana:6.8.1
     ports:
       - "5601:5601"
     logging:
